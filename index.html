@@ -13,11 +13,17 @@
 
     <img id="fortuneImage" src="" alt="Your Fortune">
 
-    <script>
+        <script>
+        // 1. Set your exact image number
         const totalImages = 12; 
+
+        // 2. Pick a random number
         const randomNumber = Math.floor(Math.random() * totalImages) + 1;
-        document.getElementById('fortuneImage').src = 'fortune' + randomNumber + '.jpg';
+
+        // 3. Create a unique time stamp to bypass memory caches
+        const cacheBuster = new Date().getTime();
+
+        // 4. Force load the image cleanly (Adjust the 'fortune' text if yours uses a capital F)
+        document.getElementById('fortuneImage').src = 'fortune' + randomNumber + '.jpg?v=' + cacheBuster;
     </script>
 
-</body>
-</html>
