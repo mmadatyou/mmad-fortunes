@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Fortune Cookie</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #fff8e7; margin: 0; }
+        img { max-width: 90%; max-height: 80vh; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body>
+
+    <img id="fortuneImage" src="" alt="Your Fortune">
+
+    <script>
+        // 1. Change this to the total number of fortune images you have
+        const totalImages = 12; 
+
+        // 2. This picks a random number between 1 and your total
+        const randomNumber = Math.floor(Math.random() * totalImages) + 1;
+
+        // 3. This displays the random image (e.g., fortune3.jpg)
+        document.getElementById('fortuneImage').src = 'fortune' + randomNumber + '.jpg';
+    </script>
+
+</body>
+</html>
