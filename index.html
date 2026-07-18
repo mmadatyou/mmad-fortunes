@@ -5,26 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Fortune Cookie</title>
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #fff8e7; margin: 0; }
-        img { width: 300px; height: 300px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        body { 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background-color: #fff8e7; 
+            margin: 0; 
+            font-family: Arial, sans-serif;
+        }
+        /* Mobile-friendly responsive image sizing */
+        img { 
+            max-width: 85%; 
+            max-height: 65vh; 
+            object-fit: contain; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+            margin-bottom: 25px;
+        }
+        /* Clean, tappable button styling */
+        .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #d9534f;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.2s;
+        }
+        .btn:active {
+            background-color: #c9302c;
+        }
     </style>
 </head>
 <body>
 
     <img id="fortuneImage" src="" alt="Your Fortune">
+    
+    <!-- This creates the button on the screen -->
+    <button class="btn" onclick="getNewFortune()">Tap for a New Fortune</button>
 
-        <script>
+    <script>
         // 1. Set your exact image number
         const totalImages = 12; 
 
-        // 2. Pick a random number
-        const randomNumber = Math.floor(Math.random() * totalImages) + 1;
+        function getNewFortune() {
+            // 2. Pick a random number
+            const randomNumber = Math.floor(Math.random() * totalImages) + 1;
 
-        // 3. Create a unique time stamp to bypass memory caches
-        const cacheBuster = new Date().getTime();
+            // 3. Create a unique time stamp to bypass memory caches
+            const cacheBuster = new Date().getTime();
 
-        // 4. Force load the image cleanly (Adjust the 'fortune' text if yours uses a capital F)
-       document.getElementById('fortuneImage').src = 'fortune-cookie/fortune' + randomNumber + '.jpg?v=' + cacheBuster;
+            // 4. Force load the image cleanly from your folder
+            document.getElementById('fortuneImage').src = 'fortune-cookie/fortune' + randomNumber + '.jpg?v=' + cacheBuster;
+        }
 
+        // Run the function immediately when the page first loads
+        getNewFortune();
     </script>
+
+</body>
+</html>
+
 
